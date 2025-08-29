@@ -1,0 +1,3 @@
+.venv/ linguist-vendored
+__pycache__/ linguist-vendored
+.pytest_cache/ linguist-vendored
