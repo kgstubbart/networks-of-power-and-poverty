@@ -1,3 +1,6 @@
 .venv/ linguist-vendored
 __pycache__/ linguist-vendored
 .pytest_cache/ linguist-vendored
+.vscode/ linguist-vendored
+*.ps1 linguist-vendored
+*.bat linguist-vendored

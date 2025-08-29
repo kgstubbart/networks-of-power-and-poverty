@@ -63,3 +63,8 @@ poetry.lock
 
 # Pyre type checker
 .pyre/
+
+# VS Code settings and scripts
+.vscode/
+*.ps1
+*.bat
