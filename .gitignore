@@ -68,3 +68,6 @@ poetry.lock
 .vscode/
 *.ps1
 *.bat
+
+# Virtual environment
+.venv/
