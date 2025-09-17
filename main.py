@@ -25,7 +25,7 @@ if __name__ == '__main__':
     print("Available graph types:")
     for i, g in enumerate(graph_types):
         print(f"{i}: {g}")
-    g_index = int(input("\nEnter the number of the graph type you want: "))
+    g_index = int(input("Enter the number of the graph type you want: "))
 
     print("\nAvailable layouts:")
     for i, layout in enumerate(layouts):
@@ -47,7 +47,13 @@ if __name__ == '__main__':
     weighted_choice = int(input("Enter choice: "))
     weighted = (weighted_choice == 1)
 
-    G = create_graph(selected_graph_type)
+    print("\nEnable simple mode (smaller graph)?")
+    print("0: No (default size)")
+    print("1: Yes (smaller graph, 7-10 nodes)")
+    simple_choice = int(input("Enter choice: ") or "0")
+    simple_mode = (simple_choice == 1)
+
+    G = create_graph(selected_graph_type, simple=simple_mode)
     initialize_tokens(G, initial_tokens=5)
 
     self_loop_prob = float(input("\nEnter probability (0-1) of adding self-loops to nodes (default 0.1): ") or "0.1")

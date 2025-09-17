@@ -34,27 +34,34 @@ def add_random_self_loops(G, self_loop_prob=0.1):
         if random.random() < self_loop_prob:
             G.add_edge(node, node)
 
-def create_graph(graph_type):
-    """Create a graph of the given type."""
+def create_graph(graph_type, simple=False):
+    """Create a graph of the given type. If simple=True, use fewer nodes."""
     if graph_type == 'watts_strogatz_newman':
-        return nx.watts_strogatz_graph(n=20, k=4, p=0.3)
+        n, k = (8, 2) if simple else (20, 4)
+        return nx.watts_strogatz_graph(n=n, k=k, p=0.3)
     elif graph_type == 'barabasi_albert':
-        return nx.barabasi_albert_graph(n=20, m=2)
+        n, m = (8, 2) if simple else (20, 2)
+        return nx.barabasi_albert_graph(n=n, m=m)
     elif graph_type == 'circulant':
-        return nx.circulant_graph(15, [1, 3, 5])
+        n = 7 if simple else 15
+        jumps = [1, 2] if simple else [1, 3, 5]
+        return nx.circulant_graph(n, jumps)
     elif graph_type == 'lattice':
-        G = nx.grid_2d_graph(4, 5)
+        rows, cols = (2, 4) if simple else (4, 5)
+        G = nx.grid_2d_graph(rows, cols)
         return nx.convert_node_labels_to_integers(G)
     elif graph_type == 'barbell':
-        return nx.barbell_graph(10, 3)
+        n, m = (4, 2) if simple else (10, 3)
+        return nx.barbell_graph(n, m)
     elif graph_type == 'stochastic_block':
-        sizes = [10, 10, 10]
+        sizes = [3, 3, 3] if simple else [10, 10, 10]
         probs = [[0.8, 0.05, 0.02],
                  [0.05, 0.8, 0.05],
                  [0.02, 0.05, 0.8]]
         return nx.stochastic_block_model(sizes, probs)
     elif graph_type == 'erdos_renyi':
-        return nx.erdos_renyi_graph(n=20, p=0.2)
+        n = 8 if simple else 20
+        return nx.erdos_renyi_graph(n=n, p=0.2)
     else:
         raise ValueError("Unknown graph type")
 
