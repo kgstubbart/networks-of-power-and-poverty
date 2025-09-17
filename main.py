@@ -12,12 +12,25 @@ import matplotlib.pyplot as plt
 
 if __name__ == '__main__':
     graph_types = [
-        'watts_strogatz_newman',
+        # Small-world network with local clustering and random shortcuts
+        'watts_strogatz_newman', 
+        
+        # Scale-free network, few hubs with many connections
         'barabasi_albert',
+
+        # Each node connects to fixed neighbors in a ring
         'circulant',
+
+        # Regular grid, each node connects to adjacent nodes
         'lattice',
+
+        # Two cliques joined by a bridge of nodes
         'barbell',
+
+        # Communities with dense internal and sparse external connections
         'stochastic_block',
+
+        # Random graph, edges placed independently with fixed probability
         'erdos_renyi'
     ]
     layouts = ['circular', 'spring']
