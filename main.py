@@ -43,7 +43,7 @@ if __name__ == '__main__':
     print("\nAvailable layouts:")
     for i, layout in enumerate(layouts):
         print(f"{i}: {layout}")
-    l_index = int(input("Enter the number of the layout you want: "))
+    l_index = int(input("Enter the number of the layout you want (default 0): ") or "0")
 
     selected_graph_type = graph_types[g_index]
     selected_layout = layouts[l_index]
@@ -51,19 +51,19 @@ if __name__ == '__main__':
     print("\nEnable directed edges?")
     print("0: Undirected graph")
     print("1: Directed graph with random edge directions")
-    directed_choice = int(input("Enter choice: "))
+    directed_choice = int(input("Enter choice (default 0): ") or "0")
     directed = (directed_choice == 1)
 
     print("\nEnable weighted edges?")
     print("0: Unweighted graph")
     print("1: Weighted graph")
-    weighted_choice = int(input("Enter choice: "))
+    weighted_choice = int(input("Enter choice (default 0): ") or "0")
     weighted = (weighted_choice == 1)
 
     print("\nEnable simple mode (smaller graph)?")
     print("0: No (default size)")
     print("1: Yes (smaller graph, 7-10 nodes)")
-    simple_choice = int(input("Enter choice: ") or "0")
+    simple_choice = int(input("Enter choice (default 0): ") or "0")
     simple_mode = (simple_choice == 1)
 
     G = create_graph(selected_graph_type, simple=simple_mode)
@@ -85,12 +85,12 @@ if __name__ == '__main__':
     else:
         pos = nx.spring_layout(G, seed=42, k=1.5, scale=2.0)
 
-    rounds = int(input("\nEnter number of token exchange rounds to run: "))
+    rounds = int(input("\nEnter number of token exchange rounds to run (default 15): ") or "15")
 
     print("\nChoose mode:")
     print("0: Animated (auto-advance each round)")
     print("1: Step-through (press Enter for each round)")
-    mode = int(input("Enter mode number: "))
+    mode = int(input("Enter mode number (default 0): ") or "0")
     step_through = (mode == 1)
 
     plt.ion()
